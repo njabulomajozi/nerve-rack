@@ -1,15 +1,22 @@
-import { Resource } from "sst";
+import { Resource } from 'sst';
+import { type APIGatewayEvent } from 'aws-lambda';
+import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
+import { EmailSchema } from '../schema';
 
-import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 
 const sqs = new SQSClient({});
 
-export const handler = async () => {
+export const handler = async (event: APIGatewayEvent) => {
 	try {
-		await sqs.send(new SendMessageCommand({
-			QueueUrl: Resource.SendEmail.url,
-			MessageBody: "Hello!"
-		}));
+		const body = JSON.parse(event.body || '{}');
+		EmailSchema.parse(body);
+
+		await sqs.send(
+			new SendMessageCommand({
+				QueueUrl: Resource.SendEmail.url,
+				MessageBody: 'Hello!',
+			})
+		);
 
 		return {
 			statusCode: 200,
@@ -17,7 +24,7 @@ export const handler = async () => {
 		};
 	} catch (error) {
 		return {
-			statusCode: 500,
+			statusCode: 400,
 			body: 'Trigger Send Email Function',
 		};
 	}
