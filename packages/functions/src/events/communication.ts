@@ -1,7 +1,7 @@
 import { Resource } from 'sst';
 import { type APIGatewayEvent } from 'aws-lambda';
 import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
-import { SEmail } from '../types';
+import { Types } from '@nerve-rack/core';
 
 const client = new SESv2Client();
 
@@ -10,14 +10,15 @@ export const triggerSendEmailHandler = async (event: APIGatewayEvent) => {
 		const body = JSON.parse(event.body || '{}');
 		const {
 			subject,
-			content
-		} = SEmail.parse(body);
+			content,
+			to
+		} = Types.SEmail.parse(body);
 
 		const emailRes = await client.send(
 			new SendEmailCommand({
 			  FromEmailAddress: Resource.Email.sender,
 			  Destination: {
-				ToAddresses: [Resource.Email.sender],
+				ToAddresses: to,
 			  },
 			  Content: {
 				Simple: {

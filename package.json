@@ -6,9 +6,15 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev": "sst dev --stage dev",
+    "remove": "sst remove --stage dev"
+  },
   "dependencies": {
     "sst": "ion"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4"
+  },
   "packageManager": "yarn@1.22.19+sha256.732620bac8b1690d507274f025f3c6cfdc3627a84d9642e38a07452cc00e0f2e"
 }
