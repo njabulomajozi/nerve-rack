@@ -15,3 +15,5 @@
 # sst
 .sst
 node_modules
+
+.env

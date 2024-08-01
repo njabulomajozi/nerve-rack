@@ -3,13 +3,13 @@
 import "sst"
 declare module "sst" {
   export interface Resource {
-    Email: {
+    Communication: {
       type: "sst.aws.ApiGatewayV2"
       url: string
     }
-    SendEmail: {
-      type: "sst.aws.Queue"
-      url: string
+    Email: {
+      sender: string
+      type: "sst.aws.Email"
     }
   }
 }
