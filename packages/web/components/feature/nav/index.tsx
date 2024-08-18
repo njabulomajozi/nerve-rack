@@ -32,27 +32,27 @@ export interface IMenuItem {
 
 const menuList: Array<IMenuItem> = [
 	{
-		path: '#',
+		path: '/',
 		title: 'Overview',
 		icon: faHouse,
 	},
 	{
-		path: '#',
+		path: '/emails',
 		title: 'Emails',
 		icon: faInbox,
 	},
 	{
-		path: '#',
+		path: '/api-keys',
 		title: 'API Keys',
 		icon: faKey,
 	},
 	{
-		path: '#',
+		path: '/billing',
 		title: 'Plans & Billing',
 		icon: faReceipt,
 	},
 	{
-		path: '#',
+		path: '/settings',
 		title: 'Settings',
 		icon: faGear,
 	},
@@ -107,7 +107,7 @@ export const MobileNav = () => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button size="icon" variant="outline" className="sm:hidden">
+				<Button size="icon" variant="outline" className="hidden sm:inline-flex">
 					<MenuIcon className="h-5 w-5" />
 					<span className="sr-only">Toggle Menu</span>
 				</Button>

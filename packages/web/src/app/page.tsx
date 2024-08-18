@@ -1,13 +1,14 @@
 'use client';
 import { useMemo } from 'react';
 import moment from 'moment';
+import { Types } from '@nerve-rack/core';
 import {
 	Card,
 	CardHeader,
 	CardTitle,
 	CardContent,
 } from '@lib/shadcn/components/ui/card';
-import { Emails, type IEmail } from '@components/email';
+import { Emails } from '@components/domain/email';
 
 interface IStat {
 	Icon: any;
@@ -17,7 +18,7 @@ interface IStat {
 }
 
 export default function Home() {
-	const emails = useMemo<Array<IEmail>>(() => {
+	const emails = useMemo<Array<Types.IEmail>>(() => {
 		return [
 			{
 				id: '20240812-9876',

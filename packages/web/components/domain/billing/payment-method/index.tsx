@@ -1,0 +1,1 @@
+export * from '@components/domain/billing/payment-method/payment-methods';
