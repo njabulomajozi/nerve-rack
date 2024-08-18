@@ -51,14 +51,18 @@
 
 Nerve Rack
 
+This project aims to develop a comprehensive tool for developers to consume an API that facilitates event-driven email sending using AWS services.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-* Langchain: A framework for building and interacting with LLMs.
-* Hono: A lightweight framework for building serverless Node.js applications.
-* PostgreSQL: A popular open-source relational database management system.
-* [![React][React.js]][React-url]
-* [![Next][Next.js]][Next-url]
+* Frontend: [![Next][Next.js]][Next-url] - A powerful framework for building server-side rendered and static web applications using React.
+* Backend: Node.js - An open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.
+* Serverless Computing: AWS Lambda - Enables running code without provisioning or managing servers. AWS Lambda executes your code only when required and scales automatically, from a few daily requests to thousands per second.
+* API Management: AWS API Gateway - A fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
+* Message Queuing Service: AWS SQS - A fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.
+* Email Marketing Service: Amazon Pinpoint - A flexible and scalable outbound and inbound marketing communications service for engaging customers across channels to build lasting relationships.
+* Deployment Tool: SST (Serverless Stack Toolkit) - A framework for building serverless applications that simplify composing and sharing your serverless infrastructure.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
