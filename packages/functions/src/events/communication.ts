@@ -42,7 +42,7 @@ const templateInputVerifier = {
 export const triggerSendEmailHandler = async (event: APIGatewayEvent) => {
 	try {
 		const body = JSON.parse(event.body || '{}');
-        const { error, data } = Types.SEmail.safeParse(body);
+        const { error, data } = Types.SSendEmail.safeParse(body);
 
 		if (error) {
 			return { statusCode: 400, body: 'Invalid Input' };

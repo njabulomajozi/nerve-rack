@@ -8,18 +8,24 @@ export interface IEmail {
 	timestamp: string;
 }
 
-export const SEmail = z.object({
+export const SSendEmail = z.object({
     to: z.array(z.string().email()),
     template: z.object({
         name: z.enum(['WELCOME']),
         data: z.object({
-
+            name: z.string()
         }),
     }).optional(),
     content: z.object({
         subject: z.string(),
         body: z.string()
     }).optional()
+});
+
+export const SCreateEmailTemplate = z.object({
+    name: z.string(),
+    subject: z.string(),
+    htmlBody: z.string()
 });
 
 export type TEmailConfigEntry = {
