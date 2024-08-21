@@ -41,14 +41,14 @@ export const Plans = ({ plans }: IProps) => {
 					name={name}
 					price={price}
 					features={features}
-					onPlanChange={(newPlan) => onPlanChange(newPlan)}
+					onPlanClick={(data) => onPlanChange(data.plan)}
 				/>
 			))}
 		</div>
 	);
 };
 
-const Plan = ({ activePlan, id, name, price, features, onPlanChange }: Types.IPlan) => {
+const Plan = ({ activePlan, id, name, price, features, onPlanClick }: Types.IPlan) => {
 	const buttonText: string = useMemo(() => {
 		return typeof activePlan === 'string'
 			? activePlan === name ? 'Cancel' : 'Upgrade'
@@ -57,14 +57,22 @@ const Plan = ({ activePlan, id, name, price, features, onPlanChange }: Types.IPl
 
 	const containerClassName = useMemo(() => {
 		return classNames({
-			'bg-orange-500 text-white': activePlan === name,
+			'bg-primary text-white hover:bg-primary': activePlan === name,
+			'bg-secondary text-black hover:bg-secondary': activePlan !== name,
 		});
 	}, [activePlan, name]);
 
 	const featureIconClassName = useMemo(() => {
 		return classNames({
-			'h-4 w-4': true,
-			'text-green-500': activePlan !== name,
+			'h-4 w-4 text-green-500': true,
+		});
+	}, [activePlan, name]);
+
+	const buttonClassName = useMemo(() => {
+		return classNames({
+			'w-full': true,
+			'bg-primary text-white hover:bg-primary': activePlan !== name,
+			'bg-secondary text-black hover:bg-secondary': activePlan === name,
 		});
 	}, [activePlan, name]);
 
@@ -89,8 +97,8 @@ const Plan = ({ activePlan, id, name, price, features, onPlanChange }: Types.IPl
 			</CardContent>
 			<CardFooter>
 				<Button
-					className="w-full"
-					onClick={() => onPlanChange(name)}
+					className={buttonClassName}
+					onClick={() => onPlanClick?.({ plan: name})}
 				>{buttonText}</Button>
 			</CardFooter>
 		</Card>

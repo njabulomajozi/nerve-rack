@@ -38,11 +38,15 @@ export interface IPayment {
 	};
 }
 
+interface OnPlanClickedParams {
+	plan: string
+}
+
 export interface IPlan {
 	activePlan?: string;
 	id: number;
 	name: string;
 	price: number;
 	features: string[];
-	onPlanChange: (newPlan: string) => void
+	onPlanClick?: (params: OnPlanClickedParams) => void
 }
